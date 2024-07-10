@@ -4,6 +4,7 @@
   --color_secundario: #f5f5f5;
   --color_contraste: #add8e6;
   --color_letra: #202020;
+  --color-letra-blanco: whitesmoke;
 }
 * {
   box-sizing: border-box;
@@ -13,9 +14,15 @@
 }
 nav,
 footer {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.bg-nav {
   background-color: var(--color_principal);
+  color: var(--color-letra-blanco);
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
 }
