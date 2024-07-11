@@ -20,13 +20,16 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--color_secundario);
 }
 main {
   flex: 1;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: var(--color_secundario);
 }
 .btn-resaltar {
   background-color: var(--color_contraste) !important;
   color: var(--color-letra);
+}
+.color-contraste-fondo {
+  background-color: var(--color_contraste);
 }
