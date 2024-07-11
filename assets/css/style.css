@@ -2,7 +2,7 @@
   color-scheme: only light;
   --color_principal: #4a90e2;
   --color_secundario: #dbdbdb;
-  --color_contraste: #add8e6;
+  --color_contraste: #b2dfee;
   --color_letra: #202020;
 }
 * {
@@ -31,5 +31,5 @@ main {
   color: var(--color-letra);
 }
 .color-contraste-fondo {
-  background-color: var(--color_contraste);
+  background-color: var(--color_contraste) !important;
 }

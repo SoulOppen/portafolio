@@ -69,8 +69,40 @@
         <h2>Habilidades</h2>
         <ul id="habilidades_list" class="list-group list-group-flush"></ul>
       </section>
-      <section id="proyectos_realizados"></section>
-      <section id="contacto"></section>
+      <section id="proyectos_realizados" class="my-md-4">
+        <h2>Proyectos Realizados</h2>
+      </section>
+      <section id="contacto" class="my-md-4">
+        <h2>Contacto</h2>
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control color-contraste-fondo"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              <small>*Nunca vamos a compartir tu mail</small>
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input color-contraste-fondo"
+              id="confirmar"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Confirmar</label
+            >
+          </div>
+          <button id="enviar" type="submit" class="btn btn-resaltar" disabled>
+            Enviar
+          </button>
+        </form>
+      </section>
     </main>
     <footer class="row g-0 justify-content-evenly">
       <div class="col-md-8">

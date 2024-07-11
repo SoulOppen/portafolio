@@ -1,6 +1,8 @@
 const $log = document.getElementById("log");
 const $list = document.getElementById("list");
 const $habilidades_list = document.getElementById("habilidades_list");
+const $confirmar = document.getElementById("confirmar");
+const $enviar = document.getElementById("enviar");
 let habilidadesArray = [
   "HTML",
   "CSS",
@@ -17,7 +19,7 @@ const logStatus = () => {
   if ($log.innerText === "Log In") {
     console.log($log.innerHTML);
     $log.innerText = "Log Out";
-    $li = document.createElement("li");
+    let $li = document.createElement("li");
     $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
     $list.appendChild($li);
   } else {
@@ -34,5 +36,10 @@ const addHabilidades = () => {
     .join("");
   $habilidades_list.innerHTML = add;
 };
+const confirmar = () => {
+  const isChecked = $confirmar.checked;
+  $enviar.disabled = !isChecked;
+};
+$confirmar.addEventListener("click", () => confirmar());
 $log.addEventListener("click", () => logStatus());
 document.addEventListener("DOMContentLoaded", addHabilidades);
