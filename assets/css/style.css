@@ -1,7 +1,7 @@
 :root {
   color-scheme: only light;
   --color_principal: #4a90e2;
-  --color_secundario: #f5f5f5;
+  --color_secundario: #dbdbdb;
   --color_contraste: #add8e6;
   --color_letra: #202020;
 }
@@ -24,6 +24,7 @@ body {
 main {
   flex: 1;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--color_secundario);
 }
 .btn-resaltar {
   background-color: var(--color_contraste) !important;

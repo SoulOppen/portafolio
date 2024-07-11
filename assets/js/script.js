@@ -5,7 +5,7 @@ const logStatus = () => {
     console.log($log.innerHTML);
     $log.innerText = "Log Out";
     $li = document.createElement("li");
-    $li.innerHTML = '<a class="nav-link" href="#">Add</a>';
+    $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
     $list.appendChild($li);
   } else {
     $log.innerText = "Log In";
