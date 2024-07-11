@@ -33,3 +33,6 @@ main {
 .color-contraste-fondo {
   background-color: var(--color_contraste) !important;
 }
+.imgHeight {
+  height: 40%;
+}
