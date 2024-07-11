@@ -13,8 +13,8 @@
     <title>Portafolio Ariel Oppenheimer</title>
   </head>
   <body>
-    <header class="g-0">
-      <nav class="navbar navbar-dark navbar-expand-lg">
+    <header class="row g-0 justify-content-evenly">
+      <nav class="navbar navbar-expand-lg col-9">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button
@@ -29,7 +29,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="list">
               <li class="nav-item">
                 <a class="nav-link" href="#descripcion_breve">Descripcion</a>
               </li>
@@ -48,6 +48,11 @@
           </div>
         </div>
       </nav>
+      <div
+        class="col-2 d-none d-lg-flex justify-content-lg-center align-items-center"
+      >
+        <button type="button" id="log" class="btn btn-resaltar">Log In</button>
+      </div>
     </header>
     <main>
       <section id="descripcion_breve"></section>

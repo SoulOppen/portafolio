@@ -4,18 +4,16 @@
   --color_secundario: #f5f5f5;
   --color_contraste: #add8e6;
   --color_letra: #202020;
-  --color-letra-blanco: whitesmoke;
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-nav,
+header,
 footer {
   background-color: var(--color_principal);
-  color: var(--color-letra-blanco);
+  color: var(--color-letra);
   font-family: Arial, Helvetica, sans-serif !important;
 }
 body {
@@ -25,4 +23,9 @@ body {
 }
 main {
   flex: 1;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn-resaltar {
+  background-color: var(--color_contraste) !important;
+  color: var(--color-letra);
 }
