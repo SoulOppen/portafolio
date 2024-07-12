@@ -168,8 +168,9 @@ const addProyect = () => {
         <h5 class="card-title">${proyecto.title}</h5>
         <p class="card-text">${proyecto.description}</p>
       </div>
-      <div class="card-footer">
+      <div class="d-flex card-footer justify-content-between">
         <a href="${proyecto.url}" target="_blank">Ver Proyecto</a>
+        <button data-proyect="${proyecto.id}" type="button" class="btn rounded-circle color-contraste-fondo">+</button>
       </div>  
     </div>
   </div>`
