@@ -1,11 +1,14 @@
 const $log = document.getElementById("log");
 const $list = document.getElementById("list");
+const $passModalAccept = document.getElementById("passModalAccept");
 const $habilidades_list = document.getElementById("habilidades_list");
 const $proyectos_realizados = document.getElementById("proyectos_realizados");
 const $mail = document.getElementById("InputEmail");
 const $area = document.getElementById("tArea");
 const $confirmar = document.getElementById("confirmar");
 const $enviar = document.getElementById("enviar");
+const $user = document.getElementById("user");
+const $InputPassword = document.getElementById("InputPassword");
 let habilidadesArray = [
   "HTML",
   "CSS",
@@ -18,7 +21,10 @@ let habilidadesArray = [
   "Postgresql",
   "R",
 ];
-
+let admin = {
+  user: "1",
+  pass: "A",
+};
 let proyectos = [
   {
     id: 1,
@@ -112,15 +118,22 @@ let proyectos = [
   },
 ];
 const logStatus = () => {
-  if ($log.innerText === "Log In") {
+  if ($log.innerText === "Log Out") {
+    $log.innerText = "Log In";
+    $list.lastElementChild.remove();
+    $log.setAttribute("data-bs-target", "#passModal");
+  }
+};
+const logIn = () => {
+  if ($InputPassword.value == admin.pass && $user.value == admin.user) {
     $log.innerText = "Log Out";
     let $li = document.createElement("li");
     $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
     $list.appendChild($li);
-  } else {
-    $log.innerText = "Log In";
-    $list.lastElementChild.remove();
+    $log.setAttribute("data-bs-target", "");
   }
+  $InputPassword.value = "";
+  $user.value = "";
 };
 const addHabilidades = () => {
   let add = habilidadesArray
@@ -147,7 +160,7 @@ const addProyect = () => {
         <p class="card-text">${proyecto.description}</p>
       </div>
       <div class="card-footer">
-        <a href="{proyecto.url}">Ver Proyecto</a>
+        <a href="${proyecto.url}" target="_blank">Ver Proyecto</a>
       </div>  
     </div>
   </div>`
@@ -176,5 +189,6 @@ const send = (e) => {
 $enviar.addEventListener("click", (e) => send(e));
 $confirmar.addEventListener("click", () => confirmar());
 $log.addEventListener("click", () => logStatus());
+$passModalAccept.addEventListener("click", () => logIn());
 document.addEventListener("DOMContentLoaded", addProyect);
 document.addEventListener("DOMContentLoaded", addHabilidades);

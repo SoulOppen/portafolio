@@ -51,7 +51,15 @@
       <div
         class="col-2 d-none d-lg-flex justify-content-lg-center align-items-center"
       >
-        <button type="button" id="log" class="btn btn-resaltar">Log In</button>
+        <button
+          type="button"
+          id="log"
+          class="btn btn-resaltar"
+          data-bs-toggle="modal"
+          data-bs-target="#passModal"
+        >
+          Log In
+        </button>
       </div>
     </header>
     <main class="container">
@@ -116,6 +124,64 @@
           </button>
         </form>
       </section>
+      <div
+        class="modal fade"
+        id="passModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header color-principal">
+              <h1 class="modal-title fs-5"">Password</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body color-fondo">
+              <form>
+                <div class="mb-3">
+                  <label for="user" class="form-label">User</label>
+                  <input
+                    class="form-control color-contraste-fondo"
+                    id="user"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="InputPassword" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control color-contraste-fondo"
+                    id="InputPassword"
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer color-principal">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="passModalAccept"
+                class="btn color-contraste-fondo"
+                data-bs-dismiss="modal"
+              >
+                Acceptar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="row g-0 justify-content-evenly">
       <div class="col-md-8">

@@ -33,6 +33,12 @@ main {
 .color-contraste-fondo {
   background-color: var(--color_contraste) !important;
 }
+.color-principal {
+  background-color: var(--color_principal) !important;
+}
+.color-fondo {
+  background-color: var(--color_secundario) !important;
+}
 .imgHeight {
   height: 40%;
 }
