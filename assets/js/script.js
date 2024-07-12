@@ -12,6 +12,11 @@ const $InputPassword = document.getElementById("InputPassword");
 const $confirmarEmail = document.getElementById("confirmarEmail");
 const $confirmarMensaje = document.getElementById("confirmarMensaje");
 const $confirmarModalButton = document.getElementById("confirmarModalButton");
+const $proyectoTitulo = document.getElementById("proyectoTitulo");
+const $imgProyecto = document.getElementById("imgProyecto");
+const $proyectoDescripcion = document.getElementById("proyectoDescripcion");
+const $habilidadesProyecto = document.getElementById("habilidadesProyecto");
+const $proyectPage = document.getElementById("proyectPage");
 const $header = document.getElementsByTagName("header");
 let datos = {};
 let habilidadesArray = [
@@ -170,7 +175,7 @@ const addProyect = () => {
       </div>
       <div class="d-flex card-footer justify-content-between">
         <a href="${proyecto.url}" target="_blank">Ver Proyecto</a>
-        <button data-proyect="${proyecto.id}" type="button" class="btn rounded-circle color-contraste-fondo">+</button>
+        <button data-proyect="${proyecto.id}" type="button" class="btn rounded-circle color-contraste-fondo" data-bs-toggle="modal" data-bs-target="#proyectoModal">+</button>
       </div>  
     </div>
   </div>`
@@ -181,7 +186,7 @@ const addProyect = () => {
   const $plusButton = document.querySelectorAll(".btn.rounded-circle");
   $plusButton.forEach((button) =>
     button.addEventListener("click", () =>
-      proyectInfo(parseInt(button.getAttribute("data-proyect")))
+      proyectModal(parseInt(button.getAttribute("data-proyect")))
     )
   );
 };
@@ -209,8 +214,17 @@ const prevSend = (e) => {
   $confirmarMensaje.innerText = datos.consulta;
 };
 const proyectInfo = (id) => {
-  let encontrado = proyectos.find((proyecto) => proyecto.id === id);
-  console.log(encontrado);
+  return proyectos.find((proyecto) => proyecto.id === id);
+};
+const proyectModal = (id) => {
+  let proyect = proyectInfo(id);
+  $proyectoTitulo.innerText = proyect.title;
+  $imgProyecto.src = proyect.img;
+  $proyectoDescripcion.innerText = proyect.description;
+  $proyectPage.href = proyect.url;
+  $habilidadesProyecto.innerHTML = proyect.habilidades
+    .map((item) => `<li>${item}</li>`)
+    .join("");
 };
 const fAlert = (mensaje, type = "positive") => {
   $div = document.createElement("div");
