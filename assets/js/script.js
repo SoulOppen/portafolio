@@ -178,6 +178,12 @@ const addProyect = () => {
     .join("");
   $div.innerHTML = add;
   $proyectos_realizados.appendChild($div);
+  const $plusButton = document.querySelectorAll(".btn.rounded-circle");
+  $plusButton.forEach((button) =>
+    button.addEventListener("click", () =>
+      proyectInfo(parseInt(button.getAttribute("data-proyect")))
+    )
+  );
 };
 const confirmar = () => {
   const isChecked = $confirmar.checked;
@@ -201,6 +207,10 @@ const prevSend = (e) => {
   };
   $confirmarEmail.innerText = datos.email;
   $confirmarMensaje.innerText = datos.consulta;
+};
+const proyectInfo = (id) => {
+  let encontrado = proyectos.find((proyecto) => proyecto.id === id);
+  console.log(encontrado);
 };
 const fAlert = (mensaje, type = "positive") => {
   $div = document.createElement("div");
