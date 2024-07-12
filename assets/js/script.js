@@ -12,6 +12,7 @@ const $InputPassword = document.getElementById("InputPassword");
 const $confirmarEmail = document.getElementById("confirmarEmail");
 const $confirmarMensaje = document.getElementById("confirmarMensaje");
 const $confirmarModalButton = document.getElementById("confirmarModalButton");
+const $header = document.getElementsByTagName("header");
 let datos = {};
 let habilidadesArray = [
   "HTML",
@@ -126,6 +127,7 @@ const logStatus = () => {
     $log.innerText = "Log In";
     $list.lastElementChild.remove();
     $log.setAttribute("data-bs-target", "#passModal");
+    fAlert("Se desconecto");
   }
 };
 const logIn = () => {
@@ -135,6 +137,9 @@ const logIn = () => {
     $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
     $list.appendChild($li);
     $log.setAttribute("data-bs-target", "");
+    fAlert("Ingreso con éxito");
+  } else {
+    fAlert("Ingreso fallido", "wrong");
   }
   $InputPassword.value = "";
   $user.value = "";
@@ -179,7 +184,9 @@ const confirmar = () => {
 };
 const send = () => {
   if (!datos.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-    alert("mail no valido");
+    fAlert("Mail no valido", "Negative");
+  } else {
+    fAlert("Consulta enviada con éxito");
   }
   $mail.value = "";
   $area.value = "";
@@ -194,6 +201,25 @@ const prevSend = (e) => {
   $confirmarEmail.innerText = datos.email;
   $confirmarMensaje.innerText = datos.consulta;
 };
+const fAlert = (mensaje, type = "positive") => {
+  $div = document.createElement("div");
+  $div.classList.add("alert");
+  if (type === "positive") {
+    $div.classList.add("alert-primary");
+  } else {
+    $div.classList.add("alert-danger");
+  }
+  $div.classList.add("alert-dismissible");
+  $div.classList.add("fade");
+  $div.classList.add("show");
+  $div.classList.add("text-center");
+  $div.classList.add("p-0");
+  $div.setAttribute("role", "alert");
+  $div.innerHTML = `<h6 class="m-0">${mensaje}</h6><button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>`;
+  $header[0].insertBefore($div, $header[0].firstChild);
+  setTimeout(() => $header[0].firstChild.remove(), "3000");
+};
+
 $enviar.addEventListener("click", (e) => prevSend(e));
 $confirmarModalButton.addEventListener("click", () => send());
 $confirmar.addEventListener("click", () => confirmar());
