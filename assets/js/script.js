@@ -9,6 +9,10 @@ const $confirmar = document.getElementById("confirmar");
 const $enviar = document.getElementById("enviar");
 const $user = document.getElementById("user");
 const $InputPassword = document.getElementById("InputPassword");
+const $confirmarEmail = document.getElementById("confirmarEmail");
+const $confirmarMensaje = document.getElementById("confirmarMensaje");
+const $confirmarModalButton = document.getElementById("confirmarModalButton");
+let datos = {};
 let habilidadesArray = [
   "HTML",
   "CSS",
@@ -173,20 +177,25 @@ const confirmar = () => {
   const isChecked = $confirmar.checked;
   $enviar.disabled = !isChecked;
 };
-const send = (e) => {
-  e.preventDefault();
-  if (!$mail.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+const send = () => {
+  if (!datos.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
     alert("mail no valido");
-  } else {
-    let datos = {
-      email: $mail.value,
-      consulta: $area.value,
-    };
-    $mail.value = "";
-    $area.value = "";
   }
+  $mail.value = "";
+  $area.value = "";
 };
-$enviar.addEventListener("click", (e) => send(e));
+
+const prevSend = (e) => {
+  e.preventDefault();
+  datos = {
+    email: $mail.value,
+    consulta: $area.value,
+  };
+  $confirmarEmail.innerText = datos.email;
+  $confirmarMensaje.innerText = datos.consulta;
+};
+$enviar.addEventListener("click", (e) => prevSend(e));
+$confirmarModalButton.addEventListener("click", () => send());
 $confirmar.addEventListener("click", () => confirmar());
 $log.addEventListener("click", () => logStatus());
 $passModalAccept.addEventListener("click", () => logIn());

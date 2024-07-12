@@ -119,7 +119,7 @@
               >Confirmar</label
             >
           </div>
-          <button id="enviar" type="submit" class="btn btn-resaltar" disabled>
+          <button id="enviar" type="submit" class="btn btn-resaltar" data-bs-toggle="modal" data-bs-target="#confirmarModal" disabled>
             Enviar
           </button>
         </form>
@@ -173,6 +173,48 @@
               <button
                 type="button"
                 id="passModalAccept"
+                class="btn color-contraste-fondo"
+                data-bs-dismiss="modal"
+              >
+                Acceptar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="confirmarModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header color-principal">
+              <h1 class="modal-title fs-5"">Confirmar Mensaje</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body color-fondo">
+              <h4 class="text-center" id="confirmarEmail"></h4>
+              <p id="confirmarMensaje"></p>
+            </div>
+            <div class="modal-footer color-principal">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="confirmarModalButton"
                 class="btn color-contraste-fondo"
                 data-bs-dismiss="modal"
               >
