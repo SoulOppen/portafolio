@@ -1,24 +1,42 @@
-const $log = document.getElementById("log");
+//navbar nodes
 const $list = document.getElementById("list");
-const $passModalAccept = document.getElementById("passModalAccept");
+const $log = document.getElementById("log");
+const $nav_log = document.getElementById("nav-log");
+
+// lista habilidades
 const $habilidades_list = document.getElementById("habilidades_list");
+
+//lista de proyectos
 const $proyectos_realizados = document.getElementById("proyectos_realizados");
+
+// redes sociales lista
+const $redes_sociales = document.getElementById("redes_sociales");
+
+//modal password
+const $user = document.getElementById("user");
+const $InputPassword = document.getElementById("InputPassword");
+const $passModalAccept = document.getElementById("passModalAccept");
+
+//form
 const $mail = document.getElementById("InputEmail");
 const $area = document.getElementById("tArea");
 const $confirmar = document.getElementById("confirmar");
 const $enviar = document.getElementById("enviar");
-const $user = document.getElementById("user");
-const $InputPassword = document.getElementById("InputPassword");
+
+//modal form
 const $confirmarEmail = document.getElementById("confirmarEmail");
 const $confirmarMensaje = document.getElementById("confirmarMensaje");
 const $confirmarModalButton = document.getElementById("confirmarModalButton");
+
+//modal proyect
 const $proyectoTitulo = document.getElementById("proyectoTitulo");
 const $imgProyecto = document.getElementById("imgProyecto");
 const $proyectoDescripcion = document.getElementById("proyectoDescripcion");
 const $habilidadesProyecto = document.getElementById("habilidadesProyecto");
 const $proyectPage = document.getElementById("proyectPage");
-const $redes_sociales = document.getElementById("redes_sociales");
+
 const $header = document.getElementsByTagName("header");
+
 let datos = {};
 let habilidadesArray = [
   "HTML",
@@ -140,21 +158,15 @@ let proyectos = [
     habilidades: ["Python", "R", "Postgresql"],
   },
 ];
-const logStatus = () => {
-  if ($log.innerText === "Log Out") {
-    $log.innerText = "Log In";
-    $list.lastElementChild.remove();
-    $log.setAttribute("data-bs-target", "#passModal");
-    fAlert("Se desconecto");
-  }
-};
 const logIn = () => {
   if ($InputPassword.value == admin.pass && $user.value == admin.user) {
     $log.innerText = "Log Out";
+    $nav_log.innerText = "Log Out";
     let $li = document.createElement("li");
     $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
     $list.appendChild($li);
     $log.setAttribute("data-bs-target", "");
+    $nav_log.setAttribute("data-bs-target", "");
     fAlert("Ingreso con éxito");
   } else {
     fAlert("Ingreso fallido", "wrong");
@@ -162,6 +174,17 @@ const logIn = () => {
   $InputPassword.value = "";
   $user.value = "";
 };
+const logStatus = () => {
+  if ($log.innerText === "Log Out") {
+    $log.innerText = "Log In";
+    $nav_log.innerText = "Log In";
+    $list.lastElementChild.remove();
+    $log.setAttribute("data-bs-target", "#passModal");
+    $nav_log.setAttribute("data-bs-target", "#passModal");
+    fAlert("Se desconecto");
+  }
+};
+
 const addHabilidades = () => {
   let add = habilidadesArray
     .map(
@@ -216,6 +239,15 @@ const confirmar = () => {
   const isChecked = $confirmar.checked;
   $enviar.disabled = !isChecked;
 };
+const prevSend = (e) => {
+  e.preventDefault();
+  datos = {
+    email: $mail.value,
+    consulta: $area.value,
+  };
+  $confirmarEmail.innerText = datos.email;
+  $confirmarMensaje.innerText = datos.consulta;
+};
 const send = () => {
   if (!datos.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
     fAlert("Mail no valido", "Negative");
@@ -226,15 +258,6 @@ const send = () => {
   $area.value = "";
 };
 
-const prevSend = (e) => {
-  e.preventDefault();
-  datos = {
-    email: $mail.value,
-    consulta: $area.value,
-  };
-  $confirmarEmail.innerText = datos.email;
-  $confirmarMensaje.innerText = datos.consulta;
-};
 const proyectInfo = (id) => {
   return proyectos.find((proyecto) => proyecto.id === id);
 };
@@ -266,12 +289,19 @@ const fAlert = (mensaje, type = "positive") => {
   $header[0].insertBefore($div, $header[0].firstChild);
   setTimeout(() => $header[0].firstChild.remove(), "3000");
 };
+//evento ingreso
+$log.addEventListener("click", () => logStatus());
+$nav_log.addEventListener("click", () => logStatus());
+$passModalAccept.addEventListener("click", () => logIn());
 
+//permitir envio de mail
+$confirmar.addEventListener("click", () => confirmar());
+
+//eventos de envio de consulta
 $enviar.addEventListener("click", (e) => prevSend(e));
 $confirmarModalButton.addEventListener("click", () => send());
-$confirmar.addEventListener("click", () => confirmar());
-$log.addEventListener("click", () => logStatus());
-$passModalAccept.addEventListener("click", () => logIn());
+
+//llenado del dom
 document.addEventListener("DOMContentLoaded", addProyect);
 document.addEventListener("DOMContentLoaded", addHabilidades);
 document.addEventListener("DOMContentLoaded", addRedes);
