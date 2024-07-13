@@ -17,6 +17,7 @@ const $imgProyecto = document.getElementById("imgProyecto");
 const $proyectoDescripcion = document.getElementById("proyectoDescripcion");
 const $habilidadesProyecto = document.getElementById("habilidadesProyecto");
 const $proyectPage = document.getElementById("proyectPage");
+const $redes_sociales = document.getElementById("redes_sociales");
 const $header = document.getElementsByTagName("header");
 let datos = {};
 let habilidadesArray = [
@@ -35,6 +36,18 @@ let admin = {
   user: "1",
   pass: "A",
 };
+let redesSociales = [
+  {
+    name: "github",
+    logo: "fa-square-github",
+    href: "https://github.com/SoulOppen",
+  },
+  {
+    name: "linkedIn",
+    logo: "fa-linkedin",
+    href: "https://www.linkedin.com/in/ariel-oppenheimer-lewin-76b05a83/",
+  },
+];
 let proyectos = [
   {
     id: 1,
@@ -190,6 +203,15 @@ const addProyect = () => {
     )
   );
 };
+const addRedes = () => {
+  let add = redesSociales
+    .map(
+      (red) =>
+        `<div><a href="${red.href}" class="text-letra target="_blank"><i class="fa-brands ${red.logo} fa-xl"></i></a></div>`
+    )
+    .join("");
+  $redes_sociales.innerHTML = add;
+};
 const confirmar = () => {
   const isChecked = $confirmar.checked;
   $enviar.disabled = !isChecked;
@@ -252,3 +274,4 @@ $log.addEventListener("click", () => logStatus());
 $passModalAccept.addEventListener("click", () => logIn());
 document.addEventListener("DOMContentLoaded", addProyect);
 document.addEventListener("DOMContentLoaded", addHabilidades);
+document.addEventListener("DOMContentLoaded", addRedes);

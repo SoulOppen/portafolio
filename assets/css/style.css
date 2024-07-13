@@ -42,3 +42,6 @@ main {
 .imgHeight {
   height: 40%;
 }
+.text-letra {
+  color: var(--color_letra);
+}
