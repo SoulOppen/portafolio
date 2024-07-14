@@ -38,6 +38,13 @@ const $proyectPage = document.getElementById("proyectPage");
 //Modal addProyect
 const $checkHabilidades = document.getElementById("checkHabilidades");
 
+//Modal add
+const $newTitle = document.getElementById("newTitle");
+const $descriptionNewProyect = document.getElementById("descriptionNewProyect");
+const $urlProyect = document.getElementById("urlProyect");
+const $urlImg = document.getElementById("urlImg");
+const $aceptarNewProyect = document.getElementById("aceptarNewProyect");
+
 const $header = document.getElementsByTagName("header");
 
 let datos = {};
@@ -200,11 +207,10 @@ const addHabilidades = () => {
   $habilidades_list.innerHTML = add;
 };
 const addProyect = () => {
-  let $div = document.createElement("div");
-  $div.classList.add("row");
-  $div.classList.add("row-cols-1");
-  $div.classList.add("row-cols-md-3");
-  $div.classList.add("g-3");
+  $proyectos_realizados.classList.add("row");
+  $proyectos_realizados.classList.add("row-cols-1");
+  $proyectos_realizados.classList.add("row-cols-md-3");
+  $proyectos_realizados.classList.add("g-3");
   let add = proyectos
     .map(
       (proyecto) => `<div class="col">
@@ -222,9 +228,8 @@ const addProyect = () => {
   </div>`
     )
     .join("");
-  $div.innerHTML = add;
-  $proyectos_realizados.appendChild($div);
-  const $plusButton = document.querySelectorAll(".btn.rounded-circle");
+  $proyectos_realizados.innerHTML = add;
+  let $plusButton = document.querySelectorAll(".btn.rounded-circle");
   $plusButton.forEach((button) =>
     button.addEventListener("click", () =>
       proyectModal(parseInt(button.getAttribute("data-proyect")))
@@ -276,6 +281,34 @@ const proyectModal = (id) => {
     .map((item) => `<li>${item}</li>`)
     .join("");
 };
+const addNewProyect = () => {
+  let array = [];
+  let ids = habilidadesArray.map((item) => `check${item.replace(" ", "_")}`);
+  for (let id of ids) {
+    let $habilidad = document.getElementById(id);
+    if ($habilidad.checked) {
+      array = [...array, $habilidad.value];
+      $habilidad.checked = false;
+    }
+  }
+  let id = 11 + Math.ceil(Math.random() * 11000);
+  let proyect = {
+    id: id,
+    title: $newTitle.value ?? "",
+    description: $descriptionNewProyect.value ?? "",
+    url: $urlProyect.value ?? "",
+    img: $urlImg.value ?? "",
+    habilidades: array ?? "",
+  };
+  $newTitle.value = "";
+  $descriptionNewProyect.value = "";
+  $urlProyect.value = "";
+  $urlImg.value = "";
+
+  proyectos = [...proyectos, proyect];
+  addProyect();
+  fAlert("Proyecto Creado con Éxito");
+};
 const addHabilidadesModal = () =>
   ($checkHabilidades.innerHTML = habilidadesArray
     .map(
@@ -318,7 +351,7 @@ $confirmar.addEventListener("click", () => confirmar());
 //eventos de envio de consulta
 $enviar.addEventListener("click", (e) => prevSend(e));
 $confirmarModalButton.addEventListener("click", () => send());
-
+$aceptarNewProyect.addEventListener("click", () => addNewProyect());
 //llenado del dom
 document.addEventListener("DOMContentLoaded", addProyect);
 document.addEventListener("DOMContentLoaded", addHabilidades);
