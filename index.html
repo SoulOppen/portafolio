@@ -172,7 +172,7 @@
                 class="btn btn-danger"
                 data-bs-dismiss="modal"
               >
-                Close
+                Salir
               </button>
               <button
                 type="button"
@@ -180,7 +180,7 @@
                 class="btn color-contraste-fondo"
                 data-bs-dismiss="modal"
               >
-                Acceptar
+                Aceptar
               </button>
             </div>
           </div>
@@ -261,6 +261,68 @@
                 data-bs-dismiss="modal"
               >
                 Salir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="proyectAddModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header color-principal">
+              <h1 class="modal-title fs-5"">Nuevo Proyecto</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body color-fondo">
+              <form>
+                <div class="mb-3">
+                  <label for="newTitle" class="form-label">Titulo</label>
+                  <input type="text" class="form-control color-contraste-fondo" id="newTitle" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="desecriptionNewProyect" class="form-label">Descripción</label>
+                  <textarea class="form-control color-contraste-fondo" id="descriptionNewProyect" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="urlProyect" class="form-label">Pagina Web</label>
+                  <input type="url" class="form-control color-contraste-fondo" id="urlProyect"></input>
+                </div>
+                <div class="mb-3">
+                  <label for="urlImg" class="form-label">Imagen Enlace</label>
+                  <input type="text" class="form-control color-contraste-fondo" id="urlImg"></input>
+                </div>
+                <p>Habilidades Proyectos</p>
+                <div id="checkHabilidades" class="form-check">
+                  
+                </div>
+              </form>
+            </div>
+           
+            <div class="modal-footer color-principal">
+              <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Salir
+            </button>
+              <button
+                type="submit"
+                class="btn color-contraste-fondo"
+                data-bs-dismiss="modal"
+              >
+                Aceptar
               </button>
             </div>
           </div>

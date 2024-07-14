@@ -35,6 +35,9 @@ const $proyectoDescripcion = document.getElementById("proyectoDescripcion");
 const $habilidadesProyecto = document.getElementById("habilidadesProyecto");
 const $proyectPage = document.getElementById("proyectPage");
 
+//Modal addProyect
+const $checkHabilidades = document.getElementById("checkHabilidades");
+
 const $header = document.getElementsByTagName("header");
 
 let datos = {};
@@ -164,6 +167,8 @@ const logIn = () => {
     $nav_log.innerText = "Log Out";
     let $li = document.createElement("li");
     $li.innerHTML = '<a class="nav-link" href="#">Agregar</a>';
+    $li.setAttribute("data-bs-toggle", "modal");
+    $li.setAttribute("data-bs-target", "#proyectAddModal");
     $list.appendChild($li);
     $log.setAttribute("data-bs-target", "");
     $nav_log.setAttribute("data-bs-target", "");
@@ -271,6 +276,19 @@ const proyectModal = (id) => {
     .map((item) => `<li>${item}</li>`)
     .join("");
 };
+const addHabilidadesModal = () =>
+  ($checkHabilidades.innerHTML = habilidadesArray
+    .map(
+      (item) =>
+        `<div><input class="form-check-input color-contraste-fondo" type="checkbox" value="${item}" id="check${item.replace(
+          " ",
+          "_"
+        )}"><label class="form-check-label" for="check${item.replace(
+          " ",
+          "_"
+        )}">${item}</label></div>`
+    )
+    .join(""));
 const fAlert = (mensaje, type = "positive") => {
   $div = document.createElement("div");
   $div.classList.add("alert");
@@ -305,3 +323,4 @@ $confirmarModalButton.addEventListener("click", () => send());
 document.addEventListener("DOMContentLoaded", addProyect);
 document.addEventListener("DOMContentLoaded", addHabilidades);
 document.addEventListener("DOMContentLoaded", addRedes);
+document.addEventListener("DOMContentLoaded", addHabilidadesModal);
