@@ -221,7 +221,7 @@ const addProyect = () => {
         <p class="card-text">${proyecto.description}</p>
       </div>
       <div class="d-flex card-footer justify-content-between">
-        <a href="${proyecto.url}" target="_blank">Ver Proyecto</a>
+        <a href="https://${proyecto.url}" target="_blank">Ver Proyecto</a>
         <button data-proyect="${proyecto.id}" type="button" class="btn rounded-circle color-contraste-fondo" data-bs-toggle="modal" data-bs-target="#proyectoModal">+</button>
       </div>  
     </div>
