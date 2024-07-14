@@ -276,7 +276,7 @@ const proyectModal = (id) => {
   $proyectoTitulo.innerText = proyect.title;
   $imgProyecto.src = proyect.img;
   $proyectoDescripcion.innerText = proyect.description;
-  $proyectPage.href = proyect.url;
+  $proyectPage.href = `https://${proyect.url}`;
   $habilidadesProyecto.innerHTML = proyect.habilidades
     .map((item) => `<li>${item}</li>`)
     .join("");
