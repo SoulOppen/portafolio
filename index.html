@@ -96,7 +96,7 @@
               aria-describedby="emailHelp"
               name="Email"
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              required
+              autocomplete="off"
             />
             <div class="form-text">
               <small>*Nunca vamos a compartir tu mail</small>
@@ -111,6 +111,7 @@
               id="tArea"
               rows="3"
               name="consulta"
+              autocomplete="off"
             ></textarea>
           </div>
           <div class="mb-3 form-check">
@@ -154,14 +155,17 @@
                     class="form-control color-contraste-fondo"
                     id="user"
                     aria-describedby="emailHelp"
+                    autocomplete="off"
                   />
                 </div>
                 <div class="mb-3">
                   <label for="InputPassword" class="form-label">Password</label>
                   <input
+
                     type="password"
                     class="form-control color-contraste-fondo"
                     id="InputPassword"
+                    autocomplete="off"
                   />
                 </div>
               </form>
@@ -286,13 +290,13 @@
             </div>
             <div class="modal-body color-fondo">
               <form>
-                <div class="mb-3">
+                <div class="mb-3"> 
                   <label for="newTitle" class="form-label">Titulo</label>
-                  <input type="text" class="form-control color-contraste-fondo" id="newTitle" aria-describedby="emailHelp">
+                  <input type="text" class="form-control color-contraste-fondo" id="newTitle" aria-describedby="emailHelp autocomplete="off"">
                 </div>
                 <div class="mb-3">
                   <label for="descriptionNewProyect" class="form-label">Descripción</label>
-                  <textarea class="form-control color-contraste-fondo" id="descriptionNewProyect" rows="3"></textarea>
+                  <textarea class="form-control color-contraste-fondo" id="descriptionNewProyect" rows="3" autocomplete="off"></textarea>
                 </div>
                 <div class="mb-3">
                   <label for="urlProyect" class="form-label">Pagina Web</label>
@@ -300,7 +304,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="urlImg" class="form-label">Imagen Enlace</label>
-                  <input type="text" class="form-control color-contraste-fondo" id="urlImg"></input>
+                  <input type="text" class="form-control color-contraste-fondo" id="urlImg" autocomplete="off"></input>
                 </div>
                 <p>Habilidades Proyectos</p>
                 <div id="checkHabilidades" class="form-check">

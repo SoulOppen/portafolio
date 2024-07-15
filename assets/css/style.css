@@ -45,3 +45,6 @@ main {
 .text-letra {
   color: var(--color_letra);
 }
+.alert-z-index {
+  z-index: 5000;
+}

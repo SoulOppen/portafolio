@@ -259,7 +259,8 @@ const prevSend = (e) => {
   $confirmarMensaje.innerText = datos.consulta;
 };
 const send = () => {
-  if (!datos.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+  let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!pattern.test(datos.email)) {
     fAlert("Mail no valido", "Negative");
   } else {
     fAlert("Consulta enviada con éxito");
@@ -335,6 +336,8 @@ const fAlert = (mensaje, type = "positive") => {
   $div.classList.add("show");
   $div.classList.add("text-center");
   $div.classList.add("p-0");
+  $div.classList.add("position-fixed");
+  $div.classList.add("alert-z-index");
   $div.setAttribute("role", "alert");
   $div.innerHTML = `<h6 class="m-0">${mensaje}</h6><button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>`;
   $header[0].insertBefore($div, $header[0].firstChild);
