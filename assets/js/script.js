@@ -240,7 +240,7 @@ const addRedes = () => {
   let add = redesSociales
     .map(
       (red) =>
-        `<div><a href="${red.href}" class="text-letra target="_blank"><i class="fa-brands ${red.logo} fa-xl"></i></a></div>`
+        `<div><a href="${red.href}" class="text-letra" target="_blank"><i class="fa-brands ${red.logo} fa-xl"></i></a></div>`
     )
     .join("");
   $redes_sociales.innerHTML = add;
